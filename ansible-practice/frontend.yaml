@@ -1,0 +1,7 @@
+- name: ansible playbook for frontend
+  hosts: frontend
+  tasks:
+    - name: install nginx
+      service:
+        name: nginx
+        state: started
