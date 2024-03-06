@@ -22,6 +22,12 @@
         path: /usr/share/nginx/html/
         state: absent
     
+    - name: create the deleted directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html/
+        state: directory
+
+
     - name: download zip folder
       ansible.builtin.get_url:
         url: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
