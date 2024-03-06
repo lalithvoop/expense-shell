@@ -28,14 +28,14 @@
         state: directory
 
 
-    - name: download zip folder
-      ansible.builtin.get_url:
-        url: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
-        dest: /tmp/frontend.zip
+    # - name: download zip folder
+    #   ansible.builtin.get_url:
+    #     url: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
+    #     dest: /tmp/frontend.zip
 
     - name: Extract frontend.zip into /usr/share/nginx/html
       ansible.builtin.unarchive:
-        src: /tmp/frontend.zip
+        src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
         dest: /usr/share/nginx/html/
         remote_src: yes
 
