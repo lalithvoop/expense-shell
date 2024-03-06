@@ -7,15 +7,15 @@
         name: nginx
         state: latest
 
-    - name: enable the service    
-      ansible.builtin.service:
-        name: nginx
-        enabled: yes
+    # - name: enable the service    
+    #   ansible.builtin.service:
+    #     name: nginx
+    #     enabled: yes
 
-    - name: starting the service    
-      ansible.builtin.service:
-        name: nginx
-        state: started
+    # - name: starting the service    
+    #   ansible.builtin.service:
+    #     name: nginx
+    #     state: started
     
     - name: copy expense.conf  
       ansible.builtin.copy:
