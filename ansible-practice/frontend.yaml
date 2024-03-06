@@ -2,6 +2,6 @@
   hosts: frontend
   tasks:
     - name: install nginx
-      service:
+      ansible.builtin.dnf:
         name: nginx
-        state: started
+        state: latest
