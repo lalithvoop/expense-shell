@@ -16,6 +16,11 @@
       ansible.builtin.service:
         name: nginx
         state: started
+    
+    - name: copy expense.conf  
+      ansible.builtin.copy:
+        src: expense.conf
+        dest: /etc/nginx/default.d/expense.conf
 
     - name: Recursively remove directory
       ansible.builtin.file:
@@ -36,13 +41,8 @@
     - name: Extract frontend.zip into /usr/share/nginx/html
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
-        dest: /usr/share/nginx/html/
+        dest: /usr/share/nginx/html
         remote_src: yes
-
-    - name: copy expense.conf  
-      copy:
-        src: expense.conf
-        dest: /etc/nginx/default.d/expense.conf
 
     - name: Restart service nginx, in all cases
       ansible.builtin.service:
