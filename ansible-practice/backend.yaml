@@ -16,7 +16,12 @@
     - name: Add the user 'expense'
       ansible.builtin.user:
         name: expense
-    
+
+    - name: clean old dir
+      ansible.builtin.file:
+        path: /app
+        state: absent
+
     - name: create dir
       ansible.builtin.file:
         path: /app
