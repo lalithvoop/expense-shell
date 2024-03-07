@@ -3,10 +3,10 @@
   become: yes
   tasks:
     - name: disable node old version
-      ansible.builtin.command: dnf module disable nodejs
+      ansible.builtin.command: dnf module disable nodejs -y
     
     - name: enable node new version
-      ansible.builtin.command: dnf module enable nodejs:20
+      ansible.builtin.command: dnf module enable nodejs:20 -y
     
     - name: install nginx
       ansible.builtin.dnf:
