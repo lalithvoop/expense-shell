@@ -8,7 +8,7 @@
     - name: enable node new version
       ansible.builtin.command: dnf module enable nodejs:20 -y
     
-    - name: install nginx
+    - name: install nodejs
       ansible.builtin.dnf:
         name: nodejs
         state: latest
@@ -27,7 +27,7 @@
         path: /app
         state: directory
 
-    - name: Extract backend.zip into /usr/share/nginx/html
+    - name: Extract backend.zip into /app
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
         dest: /app
@@ -42,6 +42,11 @@
       ansible.builtin.copy:
         src: backend.service
         dest: /etc/systemd/system/backend.service
+    
+    - name: install mysql
+      ansible.builtin.dnf:
+        name: mysql
+        state: latest
 
     - name: Install Python MySQL Client
       ansible.builtin.pip:
